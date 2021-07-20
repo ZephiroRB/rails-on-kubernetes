@@ -1,13 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: rails-demo-ing
+  name: ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: rails.carlosmto.com
-      http:
-        paths:
-          - backend:
-              serviceName: rails
-              servicePort: 3000
-            path: /
+  - host: rails.carlosmto.com 
+    http:
+      paths:
+      - backend:
+          serviceName: rails
+          servicePort: 80
