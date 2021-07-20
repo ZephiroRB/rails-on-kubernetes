@@ -22,6 +22,10 @@ spec:
         app: rails-kube-app
         tier: app
     spec:
+      volumes:
+      - name: rails-pv
+        persistentVolumeClaim:
+          claimName: rails-pvc
       containers:
       - name: rails
         image: tzumby/rails-app-alpine:latest
@@ -60,3 +64,6 @@ spec:
               key: "secret-key-base"
         ports:
           - containerPort: 3000
+        volumeMounts:
+          - mountPath: "/myapp/public"
+            name: rails-pv
