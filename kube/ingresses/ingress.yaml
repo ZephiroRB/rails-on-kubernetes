@@ -4,7 +4,7 @@ metadata:
   name: rails-demo-ing
 spec:
   rules:
-    - host: rails-prod.local
+    - host: rails.carlosmto.com
       http:
         paths:
           - backend:
